@@ -1,0 +1,83 @@
+# HG changeset patch
+# User Adolfo Rodriguez Tsouroukdissian <adolfo.rodriguez@pal-robotics.com>
+# Date 1364299588 -3600
+# Node ID 52dc606bc3b12a46bb83c2e91d4c380be0607642
+# Parent  fabf5b11ad4818ab3337d833e5089ea08a36aa5f
+Fix errors/warnings detected by the cppcheck static analysis tool.
+
+diff --git a/ros/atlas_msgs/gazebo_ros_api_plugin.cpp b/ros/atlas_msgs/gazebo_ros_api_plugin.cpp
+--- a/ros/atlas_msgs/gazebo_ros_api_plugin.cpp
++++ b/ros/atlas_msgs/gazebo_ros_api_plugin.cpp
+@@ -70,24 +70,24 @@ GZ_REGISTER_SYSTEM_PLUGIN(GazeboRosApiPl
+     /* Delete Force and Wrench Jobs */
+     {
+       boost::mutex::scoped_lock lock(this->lock_);
+       for (std::vector<GazeboRosApiPlugin::ForceJointJob*>::iterator
+         iter = this->force_joint_jobs.begin();
+         iter != this->force_joint_jobs.end();)
+       {
+         delete (*iter);
+-        this->force_joint_jobs.erase(iter);
++        iter = this->force_joint_jobs.erase(iter);
+       }
+       for (std::vector<GazeboRosApiPlugin::WrenchBodyJob*>::iterator
+         iter = this->wrench_body_jobs.begin();
+         iter != this->wrench_body_jobs.end();)
+       {
+         delete (*iter);
+-        this->wrench_body_jobs.erase(iter);
++        iter = this->wrench_body_jobs.erase(iter);
+       }
+     }
+   }
+ 
+   void GazeboRosApiPlugin::Load(int argc, char** argv)
+   {
+     // setup ros related
+     if (!ros::isInitialized())
+@@ -1830,20 +1830,20 @@ GZ_REGISTER_SYSTEM_PLUGIN(GazeboRosApiPl
+         }
+ 
+       if (ros::Time(this->world->GetSimTime().Double()) >
+           (*iter)->start_time+(*iter)->duration &&
+           (*iter)->duration.toSec() >= 0.0)
+       {
+         // remove from queue once expires
+         delete (*iter);
+-        this->wrench_body_jobs.erase(iter);
++        iter = this->wrench_body_jobs.erase(iter);
+       }
+       else
+-        iter++;
++        ++iter;
+     }
+   }
+ 
+   //////////////////////////////////////////////////////////////////////////////
+   void GazeboRosApiPlugin::forceJointSchedulerSlot()
+   {
+     // MDMutex locks in case model is getting deleted, don't have to
+     // do this if we delete jobs first
+@@ -1865,20 +1865,20 @@ GZ_REGISTER_SYSTEM_PLUGIN(GazeboRosApiPl
+               (*iter)->duration.fromSec(0.0);
+           }
+ 
+       if (ros::Time(this->world->GetSimTime().Double()) >
+           (*iter)->start_time+(*iter)->duration &&
+           (*iter)->duration.toSec() >= 0.0)
+       {
+         // remove from queue once expires
+-        this->force_joint_jobs.erase(iter);
++        iter = this->force_joint_jobs.erase(iter);
+       }
+       else
+-        iter++;
++        ++iter;
+     }
+   }
+ 
+   //////////////////////////////////////////////////////////////////////////////
+   void GazeboRosApiPlugin::publishSimTime(
+     const boost::shared_ptr<msgs::WorldStatistics const> &msg)
+   {
+     ROS_ERROR("CLOCK2");

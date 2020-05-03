@@ -1,0 +1,4 @@
+<launch>
+  <node pkg="atlas_msgs" type="actionlib_server" name="walking_actionlib_server"/>
+  <node pkg="qual_task_1_bdi" type="qt1.py" name="walking_actionlib_client" output="screen"/>
+</launch>

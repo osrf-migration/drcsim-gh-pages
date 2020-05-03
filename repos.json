@@ -1,0 +1,32 @@
+{
+    "osrf/drcsim": {
+        "project_file": "data/repositories/osrf/drcsim.json",
+        "project_path": "data/repositories/osrf/drcsim/",
+        "is_fork": false,
+        "github_repo": "https://github.com/osrf/drcsim"
+    },
+    "osrf/multisense_ros": {
+        "project_file": "data/repositories/osrf/multisense_ros.json",
+        "project_path": "data/repositories/osrf/multisense_ros/",
+        "is_fork": false,
+        "github_repo": "https://github.com/osrf/multisense_ros"
+    },
+    "osrf/osrf-common": {
+        "project_file": "data/repositories/osrf/osrf-common.json",
+        "project_path": "data/repositories/osrf/osrf-common/",
+        "is_fork": false,
+        "github_repo": "https://github.com/osrf/osrf-common"
+    },
+    "osrf/sandia-hand": {
+        "project_file": "data/repositories/osrf/sandia-hand.json",
+        "project_path": "data/repositories/osrf/sandia-hand/",
+        "is_fork": false,
+        "github_repo": "https://github.com/osrf/sandia-hand"
+    },
+    "osrf/srsim": {
+        "project_file": "data/repositories/osrf/srsim.json",
+        "project_path": "data/repositories/osrf/srsim/",
+        "is_fork": false,
+        "github_repo": "https://github.com/osrf/srsim"
+    }
+}

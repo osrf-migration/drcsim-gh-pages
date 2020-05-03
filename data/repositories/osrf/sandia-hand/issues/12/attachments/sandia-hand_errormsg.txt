@@ -1,0 +1,20 @@
+$ sudo apt-get dist-upgrade 
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Calculating upgrade... Done
+The following packages will be upgraded:
+  sandia-hand
+1 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Need to get 0 B/1,370 kB of archives.
+After this operation, 269 kB of additional disk space will be used.
+Do you want to continue [Y/n]? 
+(Reading database ... 784200 files and directories currently installed.)
+Preparing to replace sandia-hand 5.1.16-1~quantal (using .../sandia-hand_5.2.0-1~precise_amd64.deb) ...
+Unpacking replacement sandia-hand ...
+dpkg: error processing /var/cache/apt/archives/sandia-hand_5.2.0-1~precise_amd64.deb (--unpack):
+ trying to overwrite '/usr/setup.sh', which is also in package osrf-common 1.1.0-1~precise
+dpkg-deb: error: subprocess paste was killed by signal (Broken pipe)
+Errors were encountered while processing:
+ /var/cache/apt/archives/sandia-hand_5.2.0-1~precise_amd64.deb
+E: Sub-process /usr/bin/dpkg returned an error code (1)

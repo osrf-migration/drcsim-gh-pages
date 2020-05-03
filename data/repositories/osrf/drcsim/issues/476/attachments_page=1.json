@@ -1,0 +1,1 @@
+{"pagelen": 100, "values": [{"type": "issue_attachment", "name": "test_manip.cpp", "links": {"self": {"href": ["data/repositories/osrf/drcsim/issues/476/attachments/test_manip.cpp"]}}}, {"type": "issue_attachment", "name": "sway.mp4", "links": {"self": {"href": ["data/repositories/osrf/drcsim/issues/476/attachments/sway.mp4"]}}}], "page": 1, "size": 2}
